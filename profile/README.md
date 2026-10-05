@@ -8,7 +8,9 @@ indexing every prompt, user, or session.
 | Your question | Start here |
 | --- | --- |
 | Can my traces answer the questions I care about? | [fleetdiff inspect](https://github.com/llm-measurement/fleetdiff/blob/main/examples/inspect/README.md) checks a local trace file and shows what to add next. |
-| What changed in my app's token usage, caching, or busiest sessions? | [fleetdiff](https://github.com/llm-measurement/fleetdiff) compares summary windows and flags unusual ones. It runs locally, without an account. |
+| Why did my app's token usage change? | [fleetdiff investigate](https://github.com/llm-measurement/fleetdiff/blob/main/docs/INVESTIGATION.md) compares before and after, showing changes in model attempts, tokens per attempt, caching, and tracked contributors. |
+| Which recent windows need attention? | [fleetdiff scan](https://github.com/llm-measurement/fleetdiff/blob/main/docs/SCAN.md) flags unusual usage, coverage, and contributor changes, with a reason for each flag. |
+| Is my collector configuration ready to use? | [fleetdiff diagnose](https://github.com/llm-measurement/fleetdiff/blob/main/docs/DIAGNOSE.md) checks supported settings, finds risky metric labels, and points to what needs fixing. |
 | How do I keep collecting useful measurements without a metric label for every user? | [otelcol-genai-sketches](https://github.com/llm-measurement/otelcol-genai-sketches) turns OpenTelemetry spans into counters, distinct estimates, and ranked keyed summaries. Keep your existing telemetry backend. |
 | How do I build these measurements into my own service or notebook? | [llm-sketchkit](https://github.com/llm-measurement/llm-sketchkit) provides mergeable sketches in Go and Python, with a shared format and explicit error bounds. |
 
