@@ -1,35 +1,39 @@
 # LLM Measurement
 
-Open-source tools for understanding token usage and agent traffic without
-indexing every prompt, user, or session.
+Why did LLM token usage spike? Which users drove it? How do you keep those
+answers without a Prometheus label for every user?
 
-## Start With A Question
+Guides with runnable examples: https://llm-measurement.github.io/
+
+We build open-source tools for answering these questions locally: fleetdiff for
+investigation, an OpenTelemetry Collector connector for continuous measurement,
+and llm-sketchkit for Go services and Python analysis.
+
+## Start With Your Question
 
 | Your question | Start here |
 | --- | --- |
-| Can my traces answer the questions I care about? | [fleetdiff inspect](https://github.com/llm-measurement/fleetdiff/blob/main/examples/inspect/README.md) checks a local trace file and shows what to add next. |
-| Why did my app's token usage change? | [fleetdiff investigate](https://github.com/llm-measurement/fleetdiff/blob/main/docs/INVESTIGATION.md) compares before and after, showing changes in model attempts, tokens per attempt, caching, and tracked contributors. |
-| Which recent windows need attention? | [fleetdiff scan](https://github.com/llm-measurement/fleetdiff/blob/main/docs/SCAN.md) flags unusual usage, coverage, and contributor changes, with a reason for each flag. |
-| Is my collector configuration ready to use? | [fleetdiff diagnose](https://github.com/llm-measurement/fleetdiff/blob/main/docs/DIAGNOSE.md) checks supported settings, finds risky metric labels, and points to what needs fixing. |
-| How do I keep collecting useful measurements without a metric label for every user? | [otelcol-genai-sketches](https://github.com/llm-measurement/otelcol-genai-sketches) turns OpenTelemetry spans into counters, distinct estimates, and ranked keyed summaries. Keep your existing telemetry backend. |
-| How do I build these measurements into my own service or notebook? | [llm-sketchkit](https://github.com/llm-measurement/llm-sketchkit) provides mergeable sketches in Go and Python, with a shared format and explicit error bounds. |
+| Can my traces answer questions about users, sessions and token usage? | [fleetdiff inspect](https://github.com/llm-measurement/fleetdiff/blob/main/docs/INSPECT.md) checks a local OTLP capture and shows what to add. |
+| Which user or session is driving my LLM token spike? | [fleetdiff investigate](https://github.com/llm-measurement/fleetdiff/blob/main/docs/INVESTIGATION.md) compares two windows and identifies leading contributors. |
+| Which windows show unusual token consumption? | [fleetdiff scan](https://github.com/llm-measurement/fleetdiff/blob/main/docs/SCAN.md) reports usage, coverage and contributor changes against a recent baseline. |
+| Will this collector config turn user IDs into metric labels? | [fleetdiff diagnose](https://github.com/llm-measurement/fleetdiff/blob/main/docs/DIAGNOSE.md) points to risky labels and unsupported settings. |
+| How do I avoid Prometheus cardinality explosion in LLM metrics? | [otelcol-genai-sketches](https://github.com/llm-measurement/otelcol-genai-sketches) turns spans into metrics and keyed user/session rankings, while keeping your trace backend. |
+| How do I count distinct users and find token-heavy keys in my own code? | [llm-sketchkit](https://github.com/llm-measurement/llm-sketchkit) provides mergeable measurements in Go and Python. |
 
-Use each project on its own, or collect summaries with the connector and compare
-them with fleetdiff. The library also works directly in services and notebooks.
+## Using LiteLLM?
 
-## Try One
+Start with the [LiteLLM telemetry recipe](https://github.com/llm-measurement/otelcol-genai-sketches/tree/v0.3.1/examples/integrations/litellm).
+It compares reported usage before and after a change using collector summaries.
+For a quick synthetic example, run [fleetdiff's session comparison](https://github.com/llm-measurement/fleetdiff/tree/main/examples/sessions).
 
-- **Have a trace file?** Follow the [capture and inspect recipes](https://github.com/llm-measurement/fleetdiff/blob/main/examples/inspect/README.md).
-- **Want a working demo?** Try the [collector demo](https://github.com/llm-measurement/otelcol-genai-sketches#quick-start), with Prometheus and Grafana.
-- **Working in Python?** Start with `python -m pip install llm-sketchkit` and the [Python example](https://github.com/llm-measurement/llm-sketchkit#python).
+Working in Python? Start with `python -m pip install llm-sketchkit` and the
+[Python example](https://github.com/llm-measurement/llm-sketchkit#python).
 
-## Help With One Small Thing
+## Share One Useful Result
 
 [Share your inspect headline](https://github.com/llm-measurement/fleetdiff/discussions/20).
-One line is enough; your gateway or framework version is useful too. Please
-leave out raw traces, prompts, identifiers, credentials, and customer details.
+The gateway or framework version helps too. Keep raw traces, prompts, identifiers
+and credentials private.
 
-For a first contribution, try a
-[gateway capture recipe or configuration check](https://github.com/llm-measurement/fleetdiff/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22).
-Bug reports and questions are welcome in each repository. Use its `SECURITY.md`
-for private vulnerability reports.
+Questions are welcome in each repository. Follow its SECURITY.md for private
+vulnerability reports.
