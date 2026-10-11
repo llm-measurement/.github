@@ -2,9 +2,10 @@
 
 Why did LLM token usage spike? Which users drove it? Are the usage records behind those numbers complete?
 
-We build open-source tools for answering these questions locally: fleetdiff for
-investigation, an OpenTelemetry Collector connector for continuous measurement,
-and llm-sketchkit for Go services and Python analysis.
+We build open-source tools for answering these questions locally: fleetdiff
+explains token-usage changes, including directly from LiteLLM spend exports;
+an OpenTelemetry Collector connector provides continuous measurement; and
+llm-sketchkit supports Go services and Python analysis.
 
 **Guides with runnable examples:** [llm-measurement.github.io](https://llm-measurement.github.io/).
 
