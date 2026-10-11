@@ -17,7 +17,7 @@ and llm-sketchkit for Go services and Python analysis.
 | Which windows show unusual token consumption? | [fleetdiff scan](https://github.com/llm-measurement/fleetdiff/blob/main/docs/SCAN.md) reports usage, coverage and contributor changes against a recent baseline. |
 | Will this collector config turn user IDs into metric labels? | [fleetdiff diagnose](https://github.com/llm-measurement/fleetdiff/blob/main/docs/DIAGNOSE.md) points to risky labels and unsupported settings. |
 | How do I count distinct users and find token-heavy keys in my own code? | [llm-sketchkit](https://github.com/llm-measurement/llm-sketchkit) provides mergeable measurements in Go and Python. |
-| How do I avoid Prometheus cardinality explosion in LLM metrics? | [otelcol-genai-sketches](https://github.com/llm-measurement/otelcol-genai-sketches) turns spans into metrics and keyed user/session rankings, while keeping your trace backend. |
+| How do I see LLM usage per user without a metric label for every user? | [otelcol-genai-sketches](https://github.com/llm-measurement/otelcol-genai-sketches) turns spans into metrics and keyed user/session rankings, while keeping your trace backend. |
 
 ## Using LiteLLM?
 
