@@ -3,11 +3,11 @@
 Why did LLM token usage spike? Which users drove it? How do you keep those
 answers without a Prometheus label for every user?
 
-Guides with runnable examples: https://llm-measurement.github.io/
-
 We build open-source tools for answering these questions locally: fleetdiff for
 investigation, an OpenTelemetry Collector connector for continuous measurement,
 and llm-sketchkit for Go services and Python analysis.
+
+**Guides with runnable examples:** [llm-measurement.github.io](https://llm-measurement.github.io/).
 
 ## Start With Your Question
 
